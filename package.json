@@ -3,8 +3,18 @@
   "version": "0.1.0",
   "description": "Core utility for node.js",
   "main": "index.js",
+  "bin": {
+    "eslint": "./node_modules/eslint/bin/eslint.js",
+    "mocha": "./node_modules/mocha/bin/mocha",
+    "webpack": "./node_modules/webpack/bin/webpack.js",
+    "webpack-dev-server": "./node_modules/webpack-dev-server/webpack-dev-server.js"
+  },
   "scripts": {
-    "test": "npm run test"
+    "eslint": "npm run eslint",
+    "lint": "eslint src --ext=.js,.jsx",
+    "clean": "rimraf build",
+    "pretest": "npm run lint",
+    "test": "mocha --compilers js:babel-core/register --recursive src/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +30,20 @@
   "bugs": {
     "url": "https://github.com/jimzhan/kernel.js/issues"
   },
-  "homepage": "https://github.com/jimzhan/kernel.js#readme"
+  "homepage": "https://github.com/jimzhan/kernel.js#readme",
+  "devDependencies": {
+    "babel-core": "latest",
+    "babel-eslint": "latest",
+    "eslint": "latest",
+    "eslint-config-airbnb": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-jsx-a11y": "latest",
+    "eslint-plugin-react": "latest",
+    "rimraf": "latest"
+  },
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "superagent": "^1.8.3"
+  }
 }
